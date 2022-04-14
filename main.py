@@ -1,5 +1,5 @@
 # Make a discord bot using Nextcord
-from discord import Embed
+from discord import Embed, Game
 from nextcord.ext import commands
 from os import environ as env
 from fun import Fun
@@ -66,6 +66,7 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     print("Bot is now loaded as {}".format(bot.user.name))
+    await bot.change_presence(activity=Game(name=f"{prefix}help"))
 
 # Now we add cogs (categories)
 bot.add_cog(Testing(bot))
